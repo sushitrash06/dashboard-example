@@ -1,0 +1,39 @@
+.button {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  &.regular {
+    background-color: #007bff;
+    color: #fff;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  &.secondary {
+    background-color: #6c757d;
+    color: #fff;
+
+    &:hover {
+      background-color: #5a6268;
+    }
+  }
+
+  &.warning {
+    background-color: #dc3545;
+    color: #fff;
+
+    &:hover {
+      background-color: #bd2130;
+    }
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
