@@ -1,11 +1,19 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import LoginPage from "./Page/Login";
+'use client'
+import { useEffect } from "react";
+import Dashboard from "./Page/Dashboard";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('formData');
+    if (!isLoggedIn) router.push('/Page/Login');
+  }, [router]);
+
   return (
-    <main className={styles.main}>
-     <LoginPage/>
+    <main>
+      <Dashboard/>
     </main>
   );
 }

@@ -1,0 +1,48 @@
+.balance-card {
+  h4 {
+    font-size: medium;
+    font-weight: 400;
+  }
+}
+.balance {
+  margin-top: 10px;
+  display: flex;
+  font-size: small;
+  .image-container{
+    margin-top: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+    border-color: rgb(207, 207, 207);
+    display: flex;
+    span {
+      margin-left: 10px;
+      max-width: 60px;
+    }
+  }
+  .image-coin {
+    width: 50px;
+    height: 50px;
+  }
+  h2 {
+    font-size: x-large;
+    font-weight: 600;
+  }
+  .info-balance{
+    margin: 10px;
+  }
+  .this-month {
+    margin-top: 20px;
+    width: 100%;
+    span {
+      background-color: rgb(212, 203, 255);
+      padding: 0.5em;
+      border-radius: 15px;
+      color: rgb(128, 100, 167);
+      font-weight: 600;
+    }
+  }
+  .balance-bar {
+    width: 100%;
+  }
+}

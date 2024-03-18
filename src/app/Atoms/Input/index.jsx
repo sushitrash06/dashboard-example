@@ -1,40 +1,55 @@
-// Input.jsx
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Input.scss';
+import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
+import { validateEmail } from '@/app/utlis';
 
-const InputComponent = ({ type, placeholder, icon, error, ...rest }) => {
+const InputComponent = ({ type, label, icon, error, ...rest }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === 'email') {
+      if (!validateEmail(value)) {
+        setEmailError('Invalid email format');
+      } else {
+        setEmailError('');
+      }
+    }
+    rest.onChange(event);
+  };
+
+  const labelId = `input-${Math.random().toString(36).substring(2, 15)}`;
+
   return (
-    <div className={`input-group ${error ? 'error' : ''}`}>
+    <div className={`input-group ${error || emailError ? 'error' : ''}`}>
+      {label && <label htmlFor={labelId}>{label}</label>}
       {icon && <i className={`input-icon ${icon}`} />}
       <input
+        className='input-box'
         type={showPassword ? 'text' : type}
-        placeholder={placeholder}
+        onChange={handleInputChange}
         {...rest}
       />
       {type === 'password' && (
-        <i
-          className={`input-icon ${
-            showPassword ? 'far fa-eye-slash' : 'far fa-eye'
-          }`}
-          onClick={togglePasswordVisibility}
-        />
+        <div className='input-icon' onClick={togglePasswordVisibility}>
+          {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
+        </div>
       )}
-      {error && <span className="error-message">{error}</span>}
+      {(error || emailError) && <span className="error-message">{error || emailError}</span>}
     </div>
   );
 };
 
 InputComponent.propTypes = {
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
+  label: PropTypes.string,
   icon: PropTypes.string,
   error: PropTypes.string,
 };

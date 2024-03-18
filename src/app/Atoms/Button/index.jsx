@@ -1,12 +1,10 @@
-// Button.jsx
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
 
-const Button = ({ onClick, text, type }) => {
+const Button = ({ onClick, text, type ,  ...rest}) => {
   return (
-    <button className={`button ${type}`} onClick={onClick}>
+    <button className={`button ${type}`} onClick={onClick} {...rest}>
       {text}
     </button>
   );

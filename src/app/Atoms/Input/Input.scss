@@ -1,15 +1,20 @@
 .input-group {
   position: relative;
   margin-bottom: 16px;
-
+  label {
+    color: #524b4b;
+    font-weight: 800;
+  }
   input {
+    margin-top: 10px;
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 25px;
     border: 1px solid #ccc;
     font-size: 16px;
     width: 100%;
+    height: 50px;
+    padding: 1em;
     transition: border-color 0.3s ease;
-
     &:focus {
       outline: none;
       border-color: #007bff;
@@ -18,7 +23,7 @@
 
   .input-icon {
     position: absolute;
-    top: 50%;
+    top: 75%;
     transform: translateY(-50%);
     right: 12px;
     color: #999;

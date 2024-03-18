@@ -1,7 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Sidebar from "./Organism/Sidebar";
+import { LuWallet, LuUser, LuClock, LuSettings, LuBell, LuHome  } from "react-icons/lu";
+
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Create Next App",
@@ -9,9 +13,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+ 
+  const sidebarItems = [
+    { label: 'Home', icon: <LuHome />, path: '/' },
+    { label: 'Notification', icon: <LuBell />},
+    { label: 'Wallet', icon: <LuWallet />, path: '/' },
+    { label: 'To Do', icon: <LuClock />, path: '/dashboard' },
+    { label: 'User', icon: <LuUser />, path: '/dashboard' },
+    { label: 'Settings', icon: <LuSettings />, path: '/settings' },
+  ];
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Sidebar items={sidebarItems} />
+      <div className="main-page">
+      {children}
+      </div>
+      </body>
     </html>
   );
 }
